@@ -17,28 +17,28 @@ Using Node :
 /* require of Multicat module */
 const Multicat = require('tdm-multicat');
 
-/* Constructor of List */
-let Classifier = new Multicat.Classifier();
+/* Build new Instance of Classifier */
+let classifier = new Multicat.Classifier();
 
-/* Constructor of List */
+/* Build new Instance of List */
 let list = new Multicat.List();
 
-/* Constructor of Classification */
+/* Build new Instance of Classification */
 let classification = new Multicat.Classification();
 
-/* Constructor of ListOfClassification */
+/* Build new Instance of ListOfClassification */
 let listOfClassification = new Multicat.ListOfClassification();
 
-/* Constructor of Element */
+/* Build new Instance of Element */
 let element = new Multicat.Element();
 
-/* Constructor of ListOfElement */
+/* Build new Instance of ListOfElement */
 let listOfElement = new Multicat.ListOfElement();
 
-/* Constructor of Table */
+/* Build new Instance of Table */
 let table = new Multicat.Table();
 
-/* Constructor of ListOfTable */
+/* Build new Instance of ListOfTable */
 let listOfTable = new Multicat.ListOfTable();
 ```
 
