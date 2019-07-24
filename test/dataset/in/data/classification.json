@@ -1,0 +1,42 @@
+{
+  "load": [{
+    "label": "Should not load data (invalid level)",
+    "arguments": {
+      "data": {
+        "level": "1",
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not load data (invalid value)",
+    "arguments": {
+      "data": {
+        "level": "1"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load data",
+    "arguments": {
+      "data": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save data",
+    "arguments": {},
+    "result": {
+      "equal": "{\"level\":1,\"value\":\"category level 1\"}"
+    }
+  }]
+}

@@ -1,0 +1,61 @@
+{
+  "load": [{
+    "label": "Should not load all data (invalid identifier)",
+    "arguments": {
+      "data": {
+        "identifier": 0,
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not load all data (invalid classifications)",
+    "arguments": {
+      "data": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": "2",
+          "value": "category level 2"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load all data",
+    "arguments": {
+      "data": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save all data",
+    "arguments": {},
+    "result": {
+      "equal": "{\"identifier\":\"TU\",\"classifications\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]}"
+    }
+  }]
+}

@@ -1,0 +1,262 @@
+{
+  "load": [{
+    "label": "Should load data",
+    "arguments": {
+      "data": {
+        "collection": [{
+          "key": "test",
+          "value": "test"
+        }]
+      }
+    },
+    "result": {
+      "equal": "{\"index\":{\"key\":{\"string:test\":[0]},\"value\":{\"string:test\":[0]}},\"blackListKey\":{},\"collection\":[{\"key\":\"test\",\"value\":\"test\"}]}"
+    }
+  }],
+  "getKey": [{
+    "label": "Should return key for string value",
+    "arguments": {
+      "value": "test"
+    },
+    "result": {
+      "equal": "string:test"
+    }
+  }, {
+    "label": "Should return key for number value",
+    "arguments": {
+      "value": 1
+    },
+    "result": {
+      "equal": "number:1"
+    }
+  }, {
+    "label": "Should return key for object value",
+    "arguments": {
+      "value": {
+        "test": "test"
+      }
+    },
+    "result": {
+      "equal": "object:828bcef8763c1bc616e25a06be4b90ff"
+    }
+  }],
+  "all": [{
+    "label": "Should return all items of List",
+    "arguments": {},
+    "result": {
+      "equal": "[{\"key\":\"test\",\"value\":\"test\"}]"
+    }
+  }],
+  "indexesOf": [{
+    "label": "Should return index of given item (item index found)",
+    "arguments": {
+      "index": "value",
+      "value": "test"
+    },
+    "result": {
+      "length": 1
+    }
+  }, {
+    "label": "Should not return index of given item (item with given value not found)",
+    "arguments": {
+      "index": "value",
+      "value": "error"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not return index of given item (index not found)",
+    "arguments": {
+      "index": "error",
+      "value": "test"
+    },
+    "result": {
+      "equal": null
+    }
+  }],
+  "findBy": [{
+    "label": "Should return item",
+    "arguments": {
+      "index": "value",
+      "value": "test"
+    },
+    "result": {
+      "length": 1
+    }
+  }, {
+    "label": "Should not return item (value not found)",
+    "arguments": {
+      "index": "value",
+      "value": "error"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not return item (index not found)",
+    "arguments": {
+      "index": "error",
+      "value": "test"
+    },
+    "result": {
+      "length": 0
+    }
+  }],
+  "findItem": [{
+    "label": "Should return item",
+    "arguments": {
+      "item": {
+        "key": "test",
+        "value": "test"
+      }
+    },
+    "result": {
+      "equal": 1
+    }
+  }, {
+    "label": "Should not return item (item not found)",
+    "arguments": {
+      "item": {
+        "key": "test",
+        "value": "error"
+      }
+    },
+    "result": {
+      "equal": 0.5
+    }
+  }, {
+    "label": "Should not return item (item with unknow key)",
+    "arguments": {
+      "item": {
+        "key": "test",
+        "error": "test"
+      }
+    },
+    "result": {
+      "equal": 0
+    }
+  }],
+  "addItem": [{
+    "label": "Should add item 'TU'",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      }
+    },
+    "result": {
+      "equal": 2
+    }
+  }, {
+    "label": "Should add item 'TU' (second time)",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      }
+    },
+    "result": {
+      "equal": 3
+    }
+  }, {
+    "label": "Should add item 'TU' (third time)",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      }
+    },
+    "result": {
+      "equal": 4
+    }
+  }],
+  "removeItem": [{
+    "label": "Should remove item 'TU' (unique item)",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      },
+      "unique": true
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should remove item 'TU' (all items)",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not remove any item (item not found)",
+    "arguments": {
+      "item": {
+        "key": "TU",
+        "value": "TU"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not remove any item (item with unknow key)",
+    "arguments": {
+      "item": {
+        "key": "error",
+        "error": "error"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }],
+  "addIndex": [{
+    "label": "Should add index",
+    "arguments": {
+      "index": "key",
+      "value": "TU",
+      "collectionIndex": -1
+    },
+    "result": {
+      "equal": 1
+    }
+  }],
+  "removeIndex": [{
+    "label": "Should remove any index",
+    "arguments": {
+      "index": "key",
+      "value": "TU",
+      "collectionIndex": -1
+    },
+    "result": {
+      "equal": 0
+    }
+  }, {
+    "label": "Should not remove any index (index not found)",
+    "arguments": {
+      "index": "key",
+      "value": "TU",
+      "collectionIndex": -1
+    },
+    "result": {
+      "equal": null
+    }
+  }, {
+    "label": "Should not remove any index (index not found)",
+    "arguments": {
+      "index": "error",
+      "value": "TU",
+      "collectionIndex": -1
+    },
+    "result": {
+      "equal": null
+    }
+  }]
+}

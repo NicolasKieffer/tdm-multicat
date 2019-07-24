@@ -1,0 +1,90 @@
+{
+  "check": [{
+    "label": "Should validate data",
+    "arguments": {
+      "data": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not validate data (level < 0)",
+    "arguments": {
+      "data": {
+        "level": -1,
+        "value": "category level -1"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (typeof level !== number)",
+    "arguments": {
+      "data": {
+        "level": "1",
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (typeof value  !== undefined)",
+    "arguments": {
+      "data": {
+        "level": 1
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }],
+  "isValid": [{
+    "label": "Should validate data",
+    "arguments": {
+      "data": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not validate data (level < 0)",
+    "arguments": {
+      "data": {
+        "level": -1,
+        "value": "category level -1"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (typeof level !== number)",
+    "arguments": {
+      "data": {
+        "level": "1",
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (typeof value  !== undefined)",
+    "arguments": {
+      "data": {
+        "level": 1
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }]
+}

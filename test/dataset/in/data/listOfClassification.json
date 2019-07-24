@@ -1,0 +1,178 @@
+{
+  "load": [{
+    "label": "Should not load all data (invalid level)",
+    "arguments": {
+      "data": [{
+        "level": 1,
+        "value": "category level 1"
+      }, {
+        "level": 2,
+        "value": "category level 2"
+      }, {
+        "level": "3",
+        "value": "category level 3"
+      }]
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load all data",
+    "arguments": {
+      "data": [{
+        "level": 1,
+        "value": "category level 1"
+      }, {
+        "level": 2,
+        "value": "category level 2"
+      }]
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save all data",
+    "arguments": {},
+    "result": {
+      "equal": "[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]"
+    }
+  }],
+  "all": [{
+    "label": "Should return all classifications",
+    "arguments": {},
+    "result": {
+      "equal": "[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]"
+    }
+  }],
+  "findByLevel": [{
+    "label": "Should return all items of classifications (level = 1)",
+    "arguments": {
+      "level": 1
+    },
+    "result": {
+      "equal": 1
+    }
+  }, {
+    "label": "Should return all items of classifications (level = 1)",
+    "arguments": {
+      "level": 2
+    },
+    "result": {
+      "equal": 2
+    }
+  }, {
+    "label": "Should not return any items of classifications (level = 3)",
+    "arguments": {
+      "level": 3
+    },
+    "result": {
+      "equal": 0
+    }
+  }],
+  "findByValue": [{
+    "label": "Should return all items of classifications (value = 'category level 1')",
+    "arguments": {
+      "value": "category level 1"
+    },
+    "result": {
+      "equal": "category level 1"
+    }
+  }, {
+    "label": "Should return all items of classifications (value = 'category level 2')",
+    "arguments": {
+      "value": "category level 2"
+    },
+    "result": {
+      "equal": "category level 2"
+    }
+  }, {
+    "label": "Should not return any items of classifications (value = 'category level 3')",
+    "arguments": {
+      "value": "category level 3"
+    },
+    "result": {
+      "equal": 0
+    }
+  }],
+  "addItem": [{
+    "label": "Should add classifications 'TU'",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (second time)",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (third time)",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "removeItem": [{
+    "label": "Should remove item 'TU' (unique item)",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      },
+      "unique": true
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should remove item 'TU' (all items)",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not remove any item (item not found)",
+    "arguments": {
+      "item": {
+        "level": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not remove any item (item with unknow key)",
+    "arguments": {
+      "item": {
+        "rank": 4,
+        "value": "category level 4"
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }]
+}

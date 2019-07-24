@@ -1,0 +1,48 @@
+{
+  "tables": {
+    "table 1": {
+      "description": {},
+      "elements": [{
+        "identifier": "element 1",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }, {
+        "identifier": "element 2",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }]
+    },
+    "table 2": {
+      "description": {},
+      "elements": [{
+        "identifier": "element 1",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }, {
+        "identifier": "element 2",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }]
+    }
+  }
+}

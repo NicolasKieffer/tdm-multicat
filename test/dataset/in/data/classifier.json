@@ -1,0 +1,172 @@
+{
+  "load": [{
+    "label": "Should not load all data (invalid path)",
+    "arguments": {
+      "filePath": "./test/dataset/in/resources/not_found.json"
+    },
+    "result": {
+      "equal": "Error: ENOENT: no such file or directory, open './test/dataset/in/resources/not_found.json'"
+    }
+  }, {
+    "label": "Should not load all data (invalid data tables)",
+    "arguments": {
+      "filePath": "./test/dataset/in/resources/invalidClassifier.json"
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load all data",
+    "arguments": {
+      "filePath": "./test/dataset/in/resources/sampleClassifier.json"
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save all data",
+    "arguments": {
+      "filePath": "./test/dataset/out/sampleClassifier.json"
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "getClassifications": [{
+    "label": "Should not get classifications of given element id (element id not found)",
+    "arguments": {
+      "elementId": "1"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should get classifications of given element id",
+    "arguments": {
+      "elementId": "element 1"
+    },
+    "result": {
+      "length": 4
+    }
+  }],
+  "getClassificationsOf": [{
+    "label": "Should not get classifications of given element id in given table (table id & element id not found)",
+    "arguments": {
+      "tableId": "1",
+      "elementId": "1"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not get classifications of given element id in given table (table id not found)",
+    "arguments": {
+      "tableId": "1",
+      "elementId": "element 1"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not get classifications of given element id in given table (element id not found)",
+    "arguments": {
+      "tableId": "table 1",
+      "elementId": "1"
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should get classifications of given element id",
+    "arguments": {
+      "tableId": "table 1",
+      "elementId": "element 1"
+    },
+    "result": {
+      "length": 2
+    }
+  }],
+  "getElements": [{
+    "label": "Should not get elements of given classification (invalid classification)",
+    "arguments": {
+      "classification": {
+        "error": "category level 3"
+      }
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not get elements of given classification (classification not found)",
+    "arguments": {
+      "classification": {
+        "level": 3,
+        "value": "category level 3"
+      }
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should get elements of given classification",
+    "arguments": {
+      "classification": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "length": 4
+    }
+  }],
+  "getElementsOf": [{
+    "label": "Should not get elements of given classification in given table (table id & classification not found)",
+    "arguments": {
+      "tableId": "1",
+      "classification": {
+        "level": 3,
+        "value": "category level 3"
+      }
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not get elements of given classification in given table (table id not found)",
+    "arguments": {
+      "tableId": "1",
+      "classification": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should not get elements of given classification in given table (classification not found)",
+    "arguments": {
+      "tableId": "table 1",
+      "classification": {
+        "level": 3,
+        "value": "category level 3"
+      }
+    },
+    "result": {
+      "length": 0
+    }
+  }, {
+    "label": "Should get elements of given classification in given table",
+    "arguments": {
+      "tableId": "table 1",
+      "classification": {
+        "level": 1,
+        "value": "category level 1"
+      }
+    },
+    "result": {
+      "length": 2
+    }
+  }]
+}

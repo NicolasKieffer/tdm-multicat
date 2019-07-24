@@ -1,0 +1,198 @@
+{
+  "addItem": [{
+    "label": "Should add elements 'TU'",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (second time)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (third time)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "removeItem": [{
+    "label": "Should remove item 'TU' (unique item)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      },
+      "unique": true
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should remove item 'TU' (all items)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not remove any item (item not found)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not remove any item (item with unknow key)",
+    "arguments": {
+      "item": {
+        "error": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }],
+  "load": [{
+    "label": "Should not load all data (incorrect identifier)",
+    "arguments": {
+      "data": {
+        "identifier": 0,
+        "description": {},
+        "elements": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not load all data (incorrect description)",
+    "arguments": {
+      "data": {
+        "identifier": "test",
+        "description": 0,
+        "elements": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not load all data (incorrect elements)",
+    "arguments": {
+      "data": {
+        "identifier": "test",
+        "description": {},
+        "elements": {}
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load all data",
+    "arguments": {
+      "data": {
+        "identifier": "table TU",
+        "description": {},
+        "elements": [{
+          "identifier": "element 1",
+          "classifications": [{
+            "level": 1,
+            "value": "category level 1"
+          }, {
+            "level": 2,
+            "value": "category level 2"
+          }]
+        }, {
+          "identifier": "element 2",
+          "classifications": [{
+            "level": 1,
+            "value": "category level 1"
+          }, {
+            "level": 2,
+            "value": "category level 2"
+          }]
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save all data",
+    "arguments": {},
+    "result": {
+      "equal": "{\"identifier\":\"table TU\",\"description\":{},\"elements\":[{\"identifier\":\"element 1\",\"classifications\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]},{\"identifier\":\"element 2\",\"classifications\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]}]}"
+    }
+  }]
+}

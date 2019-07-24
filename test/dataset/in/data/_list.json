@@ -1,0 +1,83 @@
+{
+  "check": [{
+    "label": "Check should not succed (incorrect collection)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": {},
+        "collection": ""
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Check should not succed (incorrect index)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": "",
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Check should not succed (incorrect blackListKey)",
+    "arguments": {
+      "data": {
+        "blackListKey": "",
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Check should succed (all data correct)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Check should succed (without blacklist)",
+    "arguments": {
+      "data": {
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Check should succed (without index)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Check should succed (without index & blacklist)",
+    "arguments": {
+      "data": {
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }]
+}

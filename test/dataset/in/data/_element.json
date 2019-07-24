@@ -1,0 +1,70 @@
+{
+  "check": [{
+    "label": "Should validate data",
+    "arguments": {
+      "data": {
+        "identifier": "test",
+        "classifications": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not validate data (typeof identifier !== string)",
+    "arguments": {
+      "data": {
+        "identifier": 0,
+        "classifications": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (classifications is not an Array)",
+    "arguments": {
+      "data": {
+        "identifier": 0,
+        "classifications": {}
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }],
+  "isValid": [{
+    "label": "Should validate data",
+    "arguments": {
+      "data": {
+        "identifier": "TU",
+        "classifications": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not validate data (typeof identifier !== string)",
+    "arguments": {
+      "data": {
+        "identifier": 0,
+        "classifications": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (classifications is not Instance of ListOfClassification)",
+    "arguments": {
+      "data": {
+        "identifier": "TU",
+        "classifications": {}
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }]
+}

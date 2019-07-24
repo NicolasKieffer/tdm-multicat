@@ -1,0 +1,217 @@
+{
+  "load": [{
+    "label": "Should not load all data (invalid classifications)",
+    "arguments": {
+      "data": [{
+        "identifier": "test 1",
+        "classifications": {}
+      }, {
+        "identifier": "test 2",
+        "classifications": {}
+      }]
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not load all data (data structure not valid)",
+    "arguments": {
+      "data": [{
+        "identifier": 1,
+        "classifications": []
+      }, {
+        "identifier": 2,
+        "classifications": []
+      }]
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should load all data",
+    "arguments": {
+      "data": [{
+        "identifier": "test 1",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }, {
+        "identifier": "test 2",
+        "classifications": [{
+          "level": 1,
+          "value": "category level 1"
+        }, {
+          "level": 2,
+          "value": "category level 2"
+        }]
+      }]
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "save": [{
+    "label": "Should save all data",
+    "arguments": {},
+    "result": {
+      "equal": "[{\"identifier\":\"test 1\",\"classifications\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]},{\"identifier\":\"test 2\",\"classifications\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]}]"
+    }
+  }],
+  "all": [{
+    "label": "Should return all elements",
+    "arguments": {},
+    "result": {
+      "equal": "[{\"identifier\":\"test 1\",\"classifications\":{\"list\":{\"index\":{\"level\":{\"number:1\":[0],\"number:2\":[1]},\"value\":{\"string:category level 1\":[0],\"string:category level 2\":[1]}},\"blackListKey\":{},\"collection\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]}}},{\"identifier\":\"test 2\",\"classifications\":{\"list\":{\"index\":{\"level\":{\"number:1\":[0],\"number:2\":[1]},\"value\":{\"string:category level 1\":[0],\"string:category level 2\":[1]}},\"blackListKey\":{},\"collection\":[{\"level\":1,\"value\":\"category level 1\"},{\"level\":2,\"value\":\"category level 2\"}]}}}]"}
+  }],
+  "findByIdentifier": [{
+    "label": "Should return all items of elements (identifier = 'test 1')",
+    "arguments": {
+      "identifier": "test 1"
+    },
+    "result": {
+      "equal": "test 1"
+    }
+  }, {
+    "label": "Should return all items of elements (identifier = 'test 2')",
+    "arguments": {
+      "identifier": "test 2"
+    },
+    "result": {
+      "equal": "test 2"
+    }
+  }, {
+    "label": "Should not return any items of elements (identifier = 'test 3')",
+    "arguments": {
+      "identifier": "test 3"
+    },
+    "result": {
+      "equal": 0
+    }
+  }],
+  "addItem": [{
+    "label": "Should add elements 'TU'",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (second time)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should add item 'TU' (third time)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }],
+  "removeItem": [{
+    "label": "Should remove item 'TU' (unique item)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      },
+      "unique": true
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should remove item 'TU' (all items)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should not remove any item (item not found)",
+    "arguments": {
+      "item": {
+        "identifier": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not remove any item (item with unknow key)",
+    "arguments": {
+      "item": {
+        "error": "TU",
+        "classifications": [{
+          "level": 1,
+          "value": "category level TU"
+        }, {
+          "level": 2,
+          "value": "category level TU"
+        }]
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }]
+}
