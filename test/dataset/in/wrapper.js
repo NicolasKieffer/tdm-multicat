@@ -56,6 +56,12 @@ wrappers.classifier = {
     let classification = new Classification();
     classification.load(item.arguments.classification);
     return cb(fn(item.arguments.tableId, classification));
+  },
+  'getRegisters': function(fn, item, cb) {
+    return cb(JSON.stringify(fn()));
+  },
+  'getRegistersOf': function(fn, item, cb) {
+    return cb(JSON.stringify(fn(item.arguments.tableId)));
   }
 };
 
@@ -146,6 +152,9 @@ wrappers.classification = {
   },
   'save': function(fn, item, cb) {
     return cb(JSON.stringify(fn()));
+  },
+  'toString': function(fn, item, cb) {
+    return cb(fn());
   }
 };
 

@@ -168,5 +168,29 @@
     "result": {
       "length": 2
     }
+  }],
+  "getRegisters": [{
+    "label": "Should get registers of all tables",
+    "arguments": {},
+    "result": {
+      "equal": "{\"1 - category level 1\":{\"level\":1,\"value\":\"category level 1\"},\"2 - category level 2\":{\"level\":2,\"value\":\"category level 2\"}}"
+    }
+  }],
+  "getRegistersOf": [{
+    "label": "Should not get registers of a given table (table id not found)",
+    "arguments": {
+      "tableId": "1"
+    },
+    "result": {
+      "equal": "{}"
+    }
+  }, {
+    "label": "Should get registers of a given table",
+    "arguments": {
+      "tableId": "table 1"
+    },
+    "result": {
+      "equal": "{\"1 - category level 1\":{\"level\":1,\"value\":\"category level 1\"},\"2 - category level 2\":{\"level\":2,\"value\":\"category level 2\"}}"
+    }
   }]
 }

@@ -72,4 +72,12 @@ Classification.prototype.save = function() {
   return { 'level': this.level, 'value': this.value };
 };
 
+/**
+ * Return String representation of this
+ * @returns {string} - String representation of this
+ */
+Classification.prototype.toString = function() {
+  return this.level + ' - ' + this.value;
+};
+
 module.exports = Classification;

@@ -18,6 +18,7 @@ const Table = function(identifier, description) {
   this.description = typeof description === 'object' ? description : Table.DEFAULT.description();
   this.elements = Table.DEFAULT.elements();
   this.classifications = Table.DEFAULT.classifications();
+  this.register = Table.DEFAULT.register();
   return this;
 };
 
@@ -34,6 +35,9 @@ Table.DEFAULT = {
   },
   'classifications': function() {
     return new List();
+  },
+  'register': function() {
+    return {};
   }
 };
 
@@ -76,9 +80,15 @@ Table.prototype.addItem = function(item) {
     let classifications = item.classifications.all();
     for (var i = 0; i < classifications.length; i++) {
       let classification = {
-        classification: classifications[i],
-        identifier: item.identifier
-      };
+          classification: classifications[i],
+          identifier: item.identifier
+        },
+        str = classifications[i].toString();
+      if (typeof this.register[str] === 'undefined')
+        this.register[str] = Object.assign(
+          Object.create(Object.getPrototypeOf(classifications[i])),
+          classifications[i]
+        );
       result = result && this.classifications.addItem(classification) > 0;
     }
   }
@@ -97,10 +107,12 @@ Table.prototype.removeItem = function(item, unique = false) {
     let classifications = item.classifications.all();
     for (var i = 0; i < classifications.length; i++) {
       let classification = {
-        classification: classifications[i],
-        identifier: item.identifier
-      };
+          classification: classifications[i],
+          identifier: item.identifier
+        },
+        str = classifications[i].toString();
       result = result && this.classifications.removeItem(classification, true);
+      if (!this.classifications.findItem(classification).length) delete this.register[str];
     }
   }
   return result;

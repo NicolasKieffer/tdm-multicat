@@ -106,6 +106,35 @@ Classifier.prototype.getElementsOf = function(tableId, classification) {
 };
 
 /**
+ * Get alls registers
+ * @returns {Object} - An Object containing all registers
+ */
+Classifier.prototype.getRegisters = function() {
+  let result = {},
+    tables = this.tables.all();
+  for (var i = 0; i < tables.length; i++) {
+    let table = tables[i];
+    let register = this.getRegistersOf(table.identifier);
+    for (var key in register) {
+      result[key] = register[key];
+    }
+  }
+  return result;
+};
+
+/**
+ * Get register of given Table
+ * @param {string} tableId - Identifier of classification
+ * @returns {Object} - An Object containing register
+ */
+Classifier.prototype.getRegistersOf = function(tableId) {
+  let result = {},
+    _tables = this.tables.findByIdentifier(tableId);
+  if (_tables.length > 0) result = _tables[0].register;
+  return result;
+};
+
+/**
  * Function called when procces end
  * @callback callback
  * @param {Error} err - Process erros

@@ -38,5 +38,12 @@
     "result": {
       "equal": "{\"level\":1,\"value\":\"category level 1\"}"
     }
+  }],
+  "toString": [{
+    "label": "Should create tring representation of this",
+    "arguments": {},
+    "result": {
+      "equal": "1 - category level 1"
+    }
   }]
 }
