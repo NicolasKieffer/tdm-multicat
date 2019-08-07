@@ -95,6 +95,7 @@ $ npm run docs
     * _instance_
         * [.load(data)](#Classification+load) ⇒ <code>boolean</code>
         * [.save()](#Classification+save) ⇒ <code>Object</code>
+        * [.toString()](#Classification+toString) ⇒ <code>string</code>
     * _static_
         * [.check(data)](#Classification.check) ⇒ <code>boolean</code>
         * [.isValid(data)](#Classification.isValid) ⇒ <code>boolean</code>
@@ -128,6 +129,13 @@ Save data
 
 **Kind**: instance method of [<code>Classification</code>](#Classification)  
 **Returns**: <code>Object</code> - - An object representation of save  
+<a name="Classification+toString"></a>
+
+### classification.toString() ⇒ <code>string</code>
+Return String representation of this
+
+**Kind**: instance method of [<code>Classification</code>](#Classification)  
+**Returns**: <code>string</code> - - String representation of this  
 <a name="Classification.check"></a>
 
 ### Classification.check(data) ⇒ <code>boolean</code>
@@ -163,6 +171,8 @@ Validate data
     * [.getClassificationsOf(tableId, elementId)](#Classifier+getClassificationsOf) ⇒ <code>Array</code>
     * [.getElements(classification)](#Classifier+getElements) ⇒ [<code>Array.&lt;Element&gt;</code>](#Element)
     * [.getElementsOf(tableId, classification)](#Classifier+getElementsOf) ⇒ [<code>Array.&lt;Element&gt;</code>](#Element)
+    * [.getRegisters()](#Classifier+getRegisters) ⇒ <code>Object</code>
+    * [.getRegistersOf(tableId)](#Classifier+getRegistersOf) ⇒ <code>Object</code>
     * [.load(filePath, cb)](#Classifier+load) ⇒ <code>undefined</code>
     * [.save(filePath, cb)](#Classifier+save) ⇒ <code>undefined</code>
 
@@ -225,6 +235,25 @@ Get categories of given Table
 | --- | --- | --- |
 | tableId | <code>string</code> | Identifier of classification |
 | classification | [<code>Classification</code>](#Classification) | Classification of element |
+
+<a name="Classifier+getRegisters"></a>
+
+### classifier.getRegisters() ⇒ <code>Object</code>
+Get alls registers
+
+**Kind**: instance method of [<code>Classifier</code>](#Classifier)  
+**Returns**: <code>Object</code> - - An Object containing all registers  
+<a name="Classifier+getRegistersOf"></a>
+
+### classifier.getRegistersOf(tableId) ⇒ <code>Object</code>
+Get register of given Table
+
+**Kind**: instance method of [<code>Classifier</code>](#Classifier)  
+**Returns**: <code>Object</code> - - An Object containing register  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| tableId | <code>string</code> | Identifier of classification |
 
 <a name="Classifier+load"></a>
 
