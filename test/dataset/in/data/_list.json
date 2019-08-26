@@ -79,5 +79,86 @@
     "result": {
       "equal": true
     }
+  }],
+  "isValid": [{
+    "label": "Should not validate data (incorrect collection)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": {},
+        "collection": ""
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (incorrect index)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": "",
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should not validate data (incorrect blackListKey)",
+    "arguments": {
+      "data": {
+        "blackListKey": "",
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": false
+    }
+  }, {
+    "label": "Should validate data (all data correct)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should validate data (without blacklist)",
+    "arguments": {
+      "data": {
+        "index": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should validate data (without index)",
+    "arguments": {
+      "data": {
+        "blackListKey": {},
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
+  }, {
+    "label": "Should validate data (without index & blacklist)",
+    "arguments": {
+      "data": {
+        "collection": []
+      }
+    },
+    "result": {
+      "equal": true
+    }
   }]
 }

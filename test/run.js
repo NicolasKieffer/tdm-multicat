@@ -3,6 +3,7 @@
  */
 'use strict';
 
+/* Module Require */
 const pkg = require('../package.json'),
   Multicat = require('../index.js'),
   utils = require('tdm-utils'),
@@ -33,7 +34,7 @@ const wrapper = require('./dataset/in/wrapper.js');
 const myObject = {
   'classifier': new Multicat.Classifier(),
   'list': new Multicat.List(),
-  'List': { 'check': Multicat.List.check },
+  'List': { 'check': Multicat.List.check, 'isValid': Multicat.List.isValid },
   'Classification': {
     'check': Multicat.Classification.check,
     'isValid': Multicat.Classification.isValid

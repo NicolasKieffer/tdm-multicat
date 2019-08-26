@@ -195,7 +195,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line14">line 14</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line24">line 24</a>
     </li></ul></dd>
     
 
@@ -244,6 +244,23 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'contructor' (with paramters)</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification(1, 'geology');
+// returns an instance of Classification with properties :
+// - level : 1
+// - value : geology</code></pre>
+
+        <p class="code-caption">Example usage of 'contructor' (with default values)</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification();
+// returns an instance of Classification with properties :
+// - level : -1
+// - value : undefined</code></pre>
 
 
 
@@ -374,7 +391,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line35">line 35</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line51">line 51</a>
     </li></ul></dd>
     
 
@@ -423,6 +440,19 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'check' function (success)</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification(1, 'geology').save();
+Classification.check(classification); // returns true</code></pre>
+
+        <p class="code-caption">Example usage of 'check' function (fail)</p>
+    
+    <pre class="prettyprint"><code>let classification = {'1', 'geology'}; // invalid data, only use .save() function to build correct data structure that can be loaded
+Classification.check(classification); // returns false</code></pre>
 
 
 
@@ -492,7 +522,7 @@
 
             
 
-            <td class="description last">Data that will be validated</td>
+            <td class="description last">Data that will be validated (call Classification constructor to generate this data)</td>
         </tr>
 
     
@@ -533,7 +563,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line46">line 46</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line68">line 68</a>
     </li></ul></dd>
     
 
@@ -582,6 +612,19 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'isValid' function (success)</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification(1, 'geology');
+Classification.isValid(classification); // returns true</code></pre>
+
+        <p class="code-caption">Example usage of 'isValid' function (fail)</p>
+    
+    <pre class="prettyprint"><code>let classification = {'level' : 1, 'value' : 'geology'}; // invalid data, only use new Classification() to build valid data
+Classification.isValid(classification); // returns false</code></pre>
 
 
 
@@ -692,7 +735,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line60">line 60</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line92">line 92</a>
     </li></ul></dd>
     
 
@@ -741,6 +784,23 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'load' function (success)</p>
+    
+    <pre class="prettyprint"><code>let data = new Classification(1, 'geology').save(),
+  classification = new Classification();
+classification.load(data); // returns true
+console.log(classification.toString()); // outuput : '1 - geology'</code></pre>
+
+        <p class="code-caption">Example usage of 'load' function (fail)</p>
+    
+    <pre class="prettyprint"><code>let data = {'1' :'geology'}, // invalid data, only use .save() function to build correct data structure that can be loaded
+  classification = new Classification();
+classification.load(data); // returns false
+console.log(classification.toString()); // outuput : '-1 - undefined'</code></pre>
 
 
 
@@ -802,7 +862,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line71">line 71</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line106">line 106</a>
     </li></ul></dd>
     
 
@@ -851,6 +911,14 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'save' function</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification(1, 'geology');
+classification.save(); // returns {'level': 1, 'value': 'geology'}</code></pre>
 
 
 
@@ -912,7 +980,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line79">line 79</a>
+        <a href="classification.js.html">classification.js</a>, <a href="classification.js.html#line117">line 117</a>
     </li></ul></dd>
     
 
@@ -963,6 +1031,14 @@
 
 
 
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'toString' function</p>
+    
+    <pre class="prettyprint"><code>let classification = new Classification(1, 'geology');
+classification.toString(); // returns '1 - geology'</code></pre>
+
+
 
         
     
@@ -986,7 +1062,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Aug 08 2019 01:29:14 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Aug 26 2019 15:35:05 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

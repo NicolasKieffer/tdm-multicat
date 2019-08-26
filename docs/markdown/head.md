@@ -10,6 +10,7 @@ Using npm :
 $ npm i -g tdm-multicat
 $ npm i --save tdm-multicat
 ```
+## Uses
 
 Using Node :
 
@@ -55,4 +56,8 @@ $ npm run docs
 ```
 
 ## API Documentation
+
+Following classes are packaged into 'Multicat' variable.
+
+You must access it adding 'Multicat.' prefix in your code (see Uses section for more details)
 

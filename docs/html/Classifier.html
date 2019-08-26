@@ -211,7 +211,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line22">line 22</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line31">line 31</a>
     </li></ul></dd>
     
 
@@ -260,6 +260,22 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'contructor' (with paramters)</p>
+    
+    <pre class="prettyprint"><code>let options = { 'tables': myTables }, // According myTables (instance of ListOfTable) contain your data
+  classifier = new Classifier(options);
+// returns an instance of Classifier with properties :
+// - tables : [ListOfTable]</code></pre>
+
+        <p class="code-caption">Example usage of 'contructor' (with default values)</p>
+    
+    <pre class="prettyprint"><code>let classifier = new Classifier();
+// returns an instance of Classifier with properties :
+// - tables : new ListOfTable() (empty)</code></pre>
 
 
 
@@ -390,7 +406,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line40">line 40</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line57">line 57</a>
     </li></ul></dd>
     
 
@@ -439,6 +455,19 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'getClassifications' function (success)</p>
+    
+    <pre class="prettyprint"><code>// According there is an element identified by 'xxx-xxx-xxx'
+classifier.getClassifications('xxx-xxx-xxx'); // returns : [Object, Object, ...]</code></pre>
+
+        <p class="code-caption">Example usage of 'getClassifications' function (fail)</p>
+    
+    <pre class="prettyprint"><code>// According there is no element identified by 'xxx-xxx-xxx'
+classifier.getClassifications('xxx-xxx-xxx'); // returns : []</code></pre>
 
 
 
@@ -572,7 +601,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line57">line 57</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line80">line 80</a>
     </li></ul></dd>
     
 
@@ -621,6 +650,19 @@
     
 
 
+
+
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'getClassificationsOf' function (success)</p>
+    
+    <pre class="prettyprint"><code>// According there is an element identified by 'xxx-xxx-xxx' in table 'myTable'
+classifier.getClassificationsOf('myTable', 'xxx-xxx-xxx'); // returns : [Object, Object, ...]</code></pre>
+
+        <p class="code-caption">Example usage of 'getClassificationsOf' function (fail)</p>
+    
+    <pre class="prettyprint"><code>// According there is no element identified by 'xxx-xxx-xxx' in table 'myTable'
+classifier.getClassificationsOf('myTable', 'xxx-xxx-xxx'); // returns : []</code></pre>
 
 
 
@@ -731,7 +773,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line73">line 73</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line103">line 103</a>
     </li></ul></dd>
     
 
@@ -782,6 +824,20 @@
 
 
 
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'getElements' function (success)</p>
+    
+    <pre class="prettyprint"><code>// According there is at least one element with this classification
+classifier.getElements(new Classification(1, 'geology')); // returns : [Element, Element, ...]</code></pre>
+
+        <p class="code-caption">Example usage of 'getElements' function (fail)</p>
+    
+    <pre class="prettyprint"><code>// According there is no element identified with this classification
+classifier.getElements(new Classification(1, 'geology')); // returns : [] (no record)
+classifier.getElements({'1', 'geology'}); // returns : [] (bad parameter)</code></pre>
+
+
 
         
             
@@ -797,7 +853,7 @@
 
 
 <div class="description">
-    Get categories of given Table
+    Get Elements of given Table with given classification
 </div>
 
 
@@ -913,7 +969,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line91">line 91</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line128">line 128</a>
     </li></ul></dd>
     
 
@@ -964,6 +1020,20 @@
 
 
 
+    <h5>Examples</h5>
+    
+        <p class="code-caption">Example usage of 'getElementsOf' function (success)</p>
+    
+    <pre class="prettyprint"><code>// According there is at least one element with this classification in table 'myTable'
+classifier.getElementsOf('myTable', new Classification(1, 'geology')); // returns : [Element, Element, ...]</code></pre>
+
+        <p class="code-caption">Example usage of 'getElementsOf' function (fail)</p>
+    
+    <pre class="prettyprint"><code>// According there is no element identified with this classification in table 'myTable'
+classifier.getElementsOf('myTable', new Classification(1, 'geology')); // returns : []
+classifier.getElementsOf('myTable', {'1', 'geology'}); // returns : []</code></pre>
+
+
 
         
             
@@ -980,6 +1050,7 @@
 
 <div class="description">
     Get alls registers
+Get Elements of given Table with given classification
 </div>
 
 
@@ -1023,7 +1094,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line112">line 112</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line153">line 153</a>
     </li></ul></dd>
     
 
@@ -1072,6 +1143,14 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'getRegisters' function</p>
+    
+    <pre class="prettyprint"><code>// According there is at least one element
+classifier.getRegisters(); // returns : { '1 - geology': [Element, Element, ...] }</code></pre>
 
 
 
@@ -1182,7 +1261,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line130">line 130</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line174">line 174</a>
     </li></ul></dd>
     
 
@@ -1231,6 +1310,14 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'getRegistersOf' function</p>
+    
+    <pre class="prettyprint"><code>// According there is at least one element in table 'myTable'
+classifier.getRegistersOf(); // returns : { ... }</code></pre>
 
 
 
@@ -1364,7 +1451,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line150">line 150</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line199">line 199</a>
     </li></ul></dd>
     
 
@@ -1413,6 +1500,16 @@
     
 
 
+
+
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'load' function</p>
+    
+    <pre class="prettyprint"><code>classifier.load('./myData.json', function(err, res) {
+  if (err) return err; // will contain fs errors
+  console.log(res); // output : true if it succed, else false
+}); // returns : undefined</code></pre>
 
 
 
@@ -1546,7 +1643,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line166">line 166</a>
+        <a href="classifier.js.html">classifier.js</a>, <a href="classifier.js.html#line220">line 220</a>
     </li></ul></dd>
     
 
@@ -1597,6 +1694,16 @@
 
 
 
+    <h5>Example</h5>
+    
+        <p class="code-caption">Example usage of 'save' function</p>
+    
+    <pre class="prettyprint"><code>classifier.save('./myData.json', function(err, res) {
+  if (err) return err; // will contain fs errors
+  console.log(res); // output : true if it succed, else false
+}); // returns : undefined</code></pre>
+
+
 
         
     
@@ -1620,7 +1727,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Thu Aug 08 2019 01:29:14 GMT+0200 (CEST)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.3</a> on Mon Aug 26 2019 15:35:05 GMT+0200 (CEST)
 </footer>
 
 <script> prettyPrint(); </script>

@@ -15,25 +15,42 @@ const utils = require('tdm-utils'),
 
 /**
  * @constructs Classifier
+ * @example <caption>Example usage of 'contructor' (with paramters)</caption>
+ * let options = { 'tables': myTables }, // According myTables (instance of ListOfTable) contain your data
+ *   classifier = new Classifier(options);
+ * // returns an instance of Classifier with properties :
+ * // - tables : [ListOfTable]
+ * @example <caption>Example usage of 'contructor' (with default values)</caption>
+ * let classifier = new Classifier();
+ * // returns an instance of Classifier with properties :
+ * // - tables : new ListOfTable() (empty)
  * @param {Object} [options] - Options of constructor
  * @param {ListOfTable} [options.tables] - An instance of listOfTable
  * @returns {Classifier} - An instance of Classifier
  */
 const Classifier = function(options) {
   this.tables =
-    typeof options === 'object' && typeof options.tables !== 'undefined' ? options.tables : DEFAULT.tables();
+    typeof options === 'object' && typeof options.tables !== 'undefined' && ListOfTable.isValid(options.tables)
+      ? options.tables
+      : DEFAULT.tables();
   return this;
 };
 
 /* Default values */
 const DEFAULT = {
-  tables: function() {
+  'tables': function() {
     return new ListOfTable();
   }
 };
 
 /**
  * Return categories of all Tables with given elementId
+ * @example <caption>Example usage of 'getClassifications' function (success)</caption>
+ * // According there is an element identified by 'xxx-xxx-xxx'
+ * classifier.getClassifications('xxx-xxx-xxx'); // returns : [Object, Object, ...]
+ * @example <caption>Example usage of 'getClassifications' function (fail)</caption>
+ * // According there is no element identified by 'xxx-xxx-xxx'
+ * classifier.getClassifications('xxx-xxx-xxx'); // returns : []
  * @param {string} elementId - Identifier of given element
  * @returns {Array} - An array containing all classification associated with this elementId
  */
@@ -50,6 +67,12 @@ Classifier.prototype.getClassifications = function(elementId) {
 
 /**
  * Get categories of given Table
+ * @example <caption>Example usage of 'getClassificationsOf' function (success)</caption>
+ * // According there is an element identified by 'xxx-xxx-xxx' in table 'myTable'
+ * classifier.getClassificationsOf('myTable', 'xxx-xxx-xxx'); // returns : [Object, Object, ...]
+ * @example <caption>Example usage of 'getClassificationsOf' function (fail)</caption>
+ * // According there is no element identified by 'xxx-xxx-xxx' in table 'myTable'
+ * classifier.getClassificationsOf('myTable', 'xxx-xxx-xxx'); // returns : []
  * @param {string} tableId - Identifier of classification
  * @param {string} elementId - Identifier of given element
  * @returns {Array} - An array containing all classification associated with this elementId of given classification
@@ -67,6 +90,13 @@ Classifier.prototype.getClassificationsOf = function(tableId, elementId) {
 
 /**
  * Return Elements of all Tables with given classification
+ * @example <caption>Example usage of 'getElements' function (success)</caption>
+ * // According there is at least one element with this classification
+ * classifier.getElements(new Classification(1, 'geology')); // returns : [Element, Element, ...]
+ * @example <caption>Example usage of 'getElements' function (fail)</caption>
+ * // According there is no element identified with this classification
+ * classifier.getElements(new Classification(1, 'geology')); // returns : [] (no record)
+ * classifier.getElements({'1', 'geology'}); // returns : [] (bad parameter)
  * @param {Classification} classification - Classification of element
  * @returns {Array<Element>} - An array containing all elements associated with this classification
  */
@@ -83,7 +113,14 @@ Classifier.prototype.getElements = function(classification) {
 };
 
 /**
- * Get categories of given Table
+ * Get Elements of given Table with given classification
+ * @example <caption>Example usage of 'getElementsOf' function (success)</caption>
+ * // According there is at least one element with this classification in table 'myTable'
+ * classifier.getElementsOf('myTable', new Classification(1, 'geology')); // returns : [Element, Element, ...]
+ * @example <caption>Example usage of 'getElementsOf' function (fail)</caption>
+ * // According there is no element identified with this classification in table 'myTable'
+ * classifier.getElementsOf('myTable', new Classification(1, 'geology')); // returns : []
+ * classifier.getElementsOf('myTable', {'1', 'geology'}); // returns : []
  * @param {string} tableId - Identifier of classification
  * @param {Classification} classification - Classification of element
  * @returns {Array<Element>} - An array containing all elements associated with this classification
@@ -107,6 +144,10 @@ Classifier.prototype.getElementsOf = function(tableId, classification) {
 
 /**
  * Get alls registers
+ * Get Elements of given Table with given classification
+ * @example <caption>Example usage of 'getRegisters' function</caption>
+ * // According there is at least one element
+ * classifier.getRegisters(); // returns : { '1 - geology': [Element, Element, ...] }
  * @returns {Object} - An Object containing all registers
  */
 Classifier.prototype.getRegisters = function() {
@@ -125,6 +166,9 @@ Classifier.prototype.getRegisters = function() {
 /**
  * Get register of given Table
  * @param {string} tableId - Identifier of classification
+ * @example <caption>Example usage of 'getRegistersOf' function</caption>
+ * // According there is at least one element in table 'myTable'
+ * classifier.getRegistersOf(); // returns : { ... }
  * @returns {Object} - An Object containing register
  */
 Classifier.prototype.getRegistersOf = function(tableId) {
@@ -143,6 +187,11 @@ Classifier.prototype.getRegistersOf = function(tableId) {
 
 /**
  * Load data of given file (that must be create by save function)
+ * @example <caption>Example usage of 'load' function</caption>
+ * classifier.load('./myData.json', function(err, res) {
+ *   if (err) return err; // will contain fs errors
+ *   console.log(res); // output : true if it succed, else false
+ * }); // returns : undefined
  * @param {string} filePath - Path of file containing saved data
  * @param {callback} cb - Function called when procces end
  * @returns {undefined} - undefined
@@ -159,6 +208,11 @@ Classifier.prototype.load = function(filePath, cb) {
 
 /**
  * Save data at given filePath (that will be loaded by load function)
+ * @example <caption>Example usage of 'save' function</caption>
+ * classifier.save('./myData.json', function(err, res) {
+ *   if (err) return err; // will contain fs errors
+ *   console.log(res); // output : true if it succed, else false
+ * }); // returns : undefined
  * @param {string} filePath - Path of file that will contain saved data
  * @param {callback} cb - Function called when procces end
  * @returns {undefined} - undefined

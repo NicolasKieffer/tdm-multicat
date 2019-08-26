@@ -68,9 +68,17 @@ wrappers.classifier = {
 /**
  * - List
  *   - check()
+ *   - isValid()
  */
 wrappers.List = {
   'check': function(fn, item, cb) {
+    return cb(fn(item.arguments.data));
+  },
+  'isValid': function(fn, item, cb) {
+    let _item = new List(),
+      result = _item.load(item.arguments.data);
+    if (!result) return cb(result);
+    item.arguments.data = _item;
     return cb(fn(item.arguments.data));
   }
 };
